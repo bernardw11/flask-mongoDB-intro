@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Community Events Board</title>
+    </head>
+    <body>
+        <h1>Community Events Board</h1>
+        {% if username %}
+        <h3>{{username}}'s page</h3>
+        {% endif %}
+        <form method="post" action="/events/new">
+            <label for="event_name">Event Name:</label>
+            <input type="text" name="event_name" value="">
+            <label for="event_date">Date:</label>
+            <input type="date" name="event_date" value="">
+            <input type="submit" value="Submit">
+        </form>
+      <div class="event-list">
+        <ul>
+          {% for event in events %}
+            <li>{{ event.event }} - {{ event.date }} - {{event.user}} </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <a href = '/events'>Main Page</a><br>
+      <a href='/logout'>Logout</a>
+    </body>
+</html>
